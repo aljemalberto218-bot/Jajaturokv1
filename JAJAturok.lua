@@ -35,10 +35,10 @@ local showMainUI = function() end
 local WHITE = Color3.fromRGB(255, 255, 255)
 local GREY = Color3.fromRGB(150, 150, 170)
 local DARK = Color3.fromRGB(10, 10, 15)
-local PANEL = Color3.fromRGB(15, 15, 22)
-local PANEL2 = Color3.fromRGB(22, 22, 32)
-local BLUE = Color3.fromRGB(155, 90, 255)
-local PURPLE = Color3.fromRGB(160, 90, 255)
+local PANEL = Color3.fromRGB(15, 18, 26)
+local PANEL2 = Color3.fromRGB(22, 26, 38)
+local BLUE = Color3.fromRGB(0, 180, 255)
+local CYAN = Color3.fromRGB(0, 210, 255)
 do
     local promptGui = Instance.new("ScreenGui")
     promptGui.Name = "JAJAturokPCClientPrompt"
@@ -61,9 +61,9 @@ do
     box.Parent = overlay
     Instance.new("UICorner", box).CornerRadius = UDim.new(0, 14)
     local stroke = Instance.new("UIStroke")
-    stroke.Color = Color3.fromRGB(65, 65, 90)
+    stroke.Color = CYAN
     stroke.Thickness = 1.5
-    stroke.Transparency = 0.25
+    stroke.Transparency = 0.4
     stroke.Parent = box
     local title = Instance.new("TextLabel")
     title.Position = UDim2.fromOffset(20, 18)
@@ -89,11 +89,11 @@ do
     local yes = Instance.new("TextButton")
     yes.Position = UDim2.fromOffset(20, 122)
     yes.Size = UDim2.new(0.5, -25, 0, 42)
-    yes.BackgroundColor3 = PURPLE
+    yes.BackgroundColor3 = CYAN
     yes.BorderSizePixel = 0
     yes.AutoButtonColor = false
     yes.Text = "YES"
-    yes.TextColor3 = WHITE
+    yes.TextColor3 = Color3.fromRGB(10, 15, 25)
     yes.Font = Enum.Font.GothamBold
     yes.TextSize = 12
     yes.Parent = box
@@ -141,7 +141,7 @@ local Config = {
     NameTags = false,
     HealthBar = false,
     Distance = false,
-    BoxColor = Color3.fromRGB(255, 80, 80),
+    BoxColor = Color3.fromRGB(0, 210, 255),
     WallCheck = true,
     BigHead = false,
     BigHeadSize = 5,
@@ -180,8 +180,8 @@ local Config = {
     SA2_FovRadius = 100,
     SA2_FovVisible = true,
     SA2_FovTransparency = 0.90,
-    SA2_FovColor = Color3.fromRGB(160, 90, 255),
-    SA2_FovTargetColor = Color3.fromRGB(160, 90, 255),
+    SA2_FovColor = Color3.fromRGB(0, 210, 255),
+    SA2_FovTargetColor = Color3.fromRGB(0, 210, 255),
     SA2_ThreeSixtyMode = false,
     SA2_TargetRange = 500,
     SA2_Prediction = 0,
@@ -194,8 +194,8 @@ local Config = {
     TriggerbotInterval = 0.01,
     TriggerbotFOV = 10,
     TriggerbotFOVVisible = false,
-    TriggerbotFOVColor = Color3.fromRGB(160, 90, 255),
-    TriggerbotFOVTargetColor = Color3.fromRGB(160, 90, 255),
+    TriggerbotFOVColor = Color3.fromRGB(0, 210, 255),
+    TriggerbotFOVTargetColor = Color3.fromRGB(0, 210, 255),
     TriggerbotFOVTransparency = 0.90,
 }
 local Connections = {}
@@ -218,18 +218,18 @@ local function notify(text)
     if not holder then return end
     local label = Instance.new("TextLabel")
     label.Size = UDim2.new(0, 260, 0, 40)
-    label.BackgroundColor3 = Color3.fromRGB(18, 20, 26)
+    label.BackgroundColor3 = Color3.fromRGB(15, 20, 30)
     label.BackgroundTransparency = 0.05
     label.BorderSizePixel = 0
-    label.TextColor3 = Color3.fromRGB(240, 243, 250)
+    label.TextColor3 = Color3.fromRGB(240, 245, 255)
     label.TextSize = 13
     label.Font = Enum.Font.GothamMedium
     label.Text = text
     label.Parent = holder
     Instance.new("UICorner", label).CornerRadius = UDim.new(0, 10)
     local stroke = Instance.new("UIStroke")
-    stroke.Color = Color3.fromRGB(155, 90, 255)
-    stroke.Transparency = 0.3
+    stroke.Color = Color3.fromRGB(0, 210, 255)
+    stroke.Transparency = 0.4
     stroke.Parent = label
     local list = holder:FindFirstChildOfClass("UIListLayout")
     if list then
@@ -416,7 +416,7 @@ fovCorner.CornerRadius = UDim.new(1, 0)
 fovCorner.Parent = FOVCircle
 local fovStroke = Instance.new("UIStroke")
 fovStroke.Thickness = 1.5
-fovStroke.Color = Color3.fromRGB(155, 90, 255)
+fovStroke.Color = Color3.fromRGB(0, 210, 255)
 fovStroke.Transparency = 0.2
 fovStroke.Parent = FOVCircle
 local AimToggle = Instance.new("TextButton")
@@ -425,7 +425,7 @@ AimToggle.AnchorPoint = Vector2.new(0, 1)
 AimToggle.Position = UDim2.new(0, 75, 1, -15)
 AimToggle.Size = UDim2.fromOffset(48, 48)
 AimToggle.BackgroundColor3 = Config.TrackingEnabled
-    and Color3.fromRGB(145, 75, 235)
+    and Color3.fromRGB(0, 180, 255)
     or Color3.fromRGB(235, 65, 65)
 AimToggle.Text = "AIM"
 AimToggle.TextColor3 = Color3.new(1, 1, 1)
@@ -482,12 +482,12 @@ Main.Name = "MainWindow"
 Main.AnchorPoint = Vector2.new(0.5, 0.5)
 Main.Position = UDim2.fromScale(0.5, 0.5)
 Main.Size = UDim2.fromOffset(410, 305)
-Main.BackgroundColor3 = Color3.fromRGB(14, 16, 22)
+Main.BackgroundColor3 = Color3.fromRGB(12, 16, 24)
 Main.BorderSizePixel = 0
 Main.Parent = ScreenGui
 Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 14)
 local MainStroke = Instance.new("UIStroke")
-MainStroke.Color = Color3.fromRGB(50, 60, 85)
+MainStroke.Color = Color3.fromRGB(0, 150, 200)
 MainStroke.Thickness = 1.2
 MainStroke.Parent = Main
 local Scale = Instance.new("UIScale")
@@ -495,7 +495,7 @@ Scale.Scale = 1
 Scale.Parent = Main
 local Header = Instance.new("Frame")
 Header.Size = UDim2.new(1, 0, 0, 58)
-Header.BackgroundColor3 = Color3.fromRGB(19, 22, 31)
+Header.BackgroundColor3 = Color3.fromRGB(16, 22, 34)
 Header.BorderSizePixel = 0
 Header.Parent = Main
 local headerCorner = Instance.new("UICorner")
@@ -504,7 +504,7 @@ headerCorner.Parent = Header
 local HeaderFix = Instance.new("Frame")
 HeaderFix.Position = UDim2.new(0, 0, 1, -10)
 HeaderFix.Size = UDim2.new(1, 0, 0, 10)
-HeaderFix.BackgroundColor3 = Color3.fromRGB(19, 22, 31)
+HeaderFix.BackgroundColor3 = Color3.fromRGB(16, 22, 34)
 HeaderFix.BorderSizePixel = 0
 HeaderFix.Parent = Header
 local HeaderTitle = Instance.new("TextLabel")
@@ -523,7 +523,7 @@ HeaderSub.Position = UDim2.fromOffset(19, 32)
 HeaderSub.Size = UDim2.new(1, -80, 0, 16)
 HeaderSub.Font = Enum.Font.Gotham
 HeaderSub.Text = "developed by JAJAturok"
-HeaderSub.TextColor3 = Color3.fromRGB(120, 130, 155)
+HeaderSub.TextColor3 = Color3.fromRGB(0, 200, 240)
 HeaderSub.TextSize = 10
 HeaderSub.TextXAlignment = Enum.TextXAlignment.Left
 HeaderSub.Parent = Header
@@ -532,7 +532,7 @@ HideButton.Name = "HideButton"
 HideButton.AnchorPoint = Vector2.new(1, 0.5)
 HideButton.Position = UDim2.new(1, -14, 0.5, 0)
 HideButton.Size = UDim2.fromOffset(34, 34)
-HideButton.BackgroundColor3 = Color3.fromRGB(26, 30, 42)
+HideButton.BackgroundColor3 = Color3.fromRGB(22, 30, 48)
 HideButton.Text = "—"
 HideButton.TextColor3 = Color3.fromRGB(220, 225, 240)
 HideButton.TextSize = 16
@@ -589,14 +589,14 @@ TabLayout.Parent = Sidebar
 local Content = Instance.new("ScrollingFrame")
 Content.Position = UDim2.fromOffset(124, 68)
 Content.Size = UDim2.new(1, -136, 1, -78)
-Content.BackgroundColor3 = Color3.fromRGB(17, 20, 28)
+Content.BackgroundColor3 = Color3.fromRGB(15, 20, 30)
 Content.BorderSizePixel = 0
 Content.ClipsDescendants = true
 Content.CanvasSize = UDim2.fromOffset(0, 0)
 Content.AutomaticCanvasSize = Enum.AutomaticSize.Y
 Content.ScrollingDirection = Enum.ScrollingDirection.Y
 Content.ScrollBarThickness = 4
-Content.ScrollBarImageColor3 = Color3.fromRGB(155, 90, 255)
+Content.ScrollBarImageColor3 = Color3.fromRGB(0, 210, 255)
 Content.Active = true
 Content.ScrollBarImageTransparency = 0.3
 Content.ScrollingEnabled = true
@@ -745,7 +745,7 @@ end
 local function createTabButton(name, iconName)
     local button = Instance.new("TextButton")
     button.Size = UDim2.new(1, 0, 0, 36)
-    button.BackgroundColor3 = Color3.fromRGB(21, 25, 35)
+    button.BackgroundColor3 = Color3.fromRGB(20, 26, 38)
     button.BorderSizePixel = 0
     button.AutoButtonColor = false
     button.Text = ""
@@ -771,7 +771,7 @@ local function selectTab(name, builder)
     for tabName, button in pairs(Tabs) do
         local active = tabName == name
         local textColor = active and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(140, 150, 175)
-        button.BackgroundColor3 = active and Color3.fromRGB(125, 65, 205) or Color3.fromRGB(21, 25, 35)
+        button.BackgroundColor3 = active and Color3.fromRGB(0, 160, 220) or Color3.fromRGB(20, 26, 38)
         local label = button:FindFirstChild("Label")
         if label then
             label.TextColor3 = textColor
@@ -802,7 +802,7 @@ local function createSection(text)
     label.Size = UDim2.new(1, 0, 0, 24)
     label.BackgroundTransparency = 1
     label.Text = string.upper(text)
-    label.TextColor3 = Color3.fromRGB(165, 90, 255)
+    label.TextColor3 = Color3.fromRGB(0, 210, 255)
     label.TextSize = 10
     label.Font = Enum.Font.GothamBold
     label.TextXAlignment = Enum.TextXAlignment.Left
@@ -812,7 +812,7 @@ end
 local function createToggle(text, value, callback)
     local button = Instance.new("TextButton")
     button.Size = UDim2.new(1, 0, 0, 34)
-    button.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+    button.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
     button.BorderSizePixel = 0
     button.AutoButtonColor = false
     button.Text = ""
@@ -821,8 +821,8 @@ local function createToggle(text, value, callback)
     local check = Instance.new("Frame")
     check.Position = UDim2.fromOffset(10, 8)
     check.Size = UDim2.fromOffset(18, 18)
-    check.BackgroundColor3 = value and Color3.fromRGB(145, 75, 235)
-        or Color3.fromRGB(38, 43, 56)
+    check.BackgroundColor3 = value and Color3.fromRGB(0, 180, 255)
+        or Color3.fromRGB(38, 48, 65)
     check.BorderSizePixel = 0
     check.Parent = button
     Instance.new("UICorner", check).CornerRadius = UDim.new(0, 5)
@@ -848,7 +848,7 @@ local function createToggle(text, value, callback)
     connect(button.MouseButton1Click, function()
         state = not state
         TweenService:Create(check, TweenInfo.new(0.15), {
-            BackgroundColor3 = state and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+            BackgroundColor3 = state and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
         }):Play()
         checkText.Text = state and "✓" or ""
         callback(state)
@@ -862,7 +862,7 @@ local function createSimpleToggle(text, value, callback)
     holder.Parent = Content
     local button = Instance.new("TextButton")
     button.Size = UDim2.new(1, 0, 0, 42)
-    button.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+    button.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
     button.BorderSizePixel = 0
     button.AutoButtonColor = false
     button.Text = ""
@@ -871,7 +871,7 @@ local function createSimpleToggle(text, value, callback)
     local check = Instance.new("Frame")
     check.Position = UDim2.fromOffset(10, 12)
     check.Size = UDim2.fromOffset(18, 18)
-    check.BackgroundColor3 = value and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+    check.BackgroundColor3 = value and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
     check.BorderSizePixel = 0
     check.Parent = button
     Instance.new("UICorner", check).CornerRadius = UDim.new(0, 5)
@@ -896,7 +896,7 @@ local function createSimpleToggle(text, value, callback)
     local state = value
     connect(button.MouseButton1Click, function()
         state = not state
-        check.BackgroundColor3 = state and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+        check.BackgroundColor3 = state and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
         checkText.Text = state and "✓" or ""
         callback(state)
     end)
@@ -905,7 +905,7 @@ end
 local function createDropdown(text, options, selected, callback)
     local button = Instance.new("TextButton")
     button.Size = UDim2.new(1, 0, 0, 42)
-    button.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+    button.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
     button.BorderSizePixel = 0
     button.AutoButtonColor = false
     button.Text = ""
@@ -926,7 +926,7 @@ local function createDropdown(text, options, selected, callback)
     valueLabel.Size = UDim2.new(0.6, -12, 1, 0)
     valueLabel.BackgroundTransparency = 1
     valueLabel.Text = selected
-    valueLabel.TextColor3 = Color3.fromRGB(155, 90, 255)
+    valueLabel.TextColor3 = Color3.fromRGB(0, 210, 255)
     valueLabel.TextSize = 11
     valueLabel.Font = Enum.Font.GothamBold
     valueLabel.TextXAlignment = Enum.TextXAlignment.Right
@@ -949,7 +949,7 @@ local function createDropdown(text, options, selected, callback)
         menu = Instance.new("Frame")
         menu.ZIndex = 50
         menu.ClipsDescendants = true
-        menu.BackgroundColor3 = Color3.fromRGB(20, 24, 34)
+        menu.BackgroundColor3 = Color3.fromRGB(18, 24, 36)
         menu.BorderSizePixel = 0
         menu.Parent = ScreenGui
         Instance.new("UICorner", menu).CornerRadius = UDim.new(0, 8)
@@ -998,7 +998,7 @@ local function createSlider(text, min, max, step, value, callback, formatter)
     valueLabel.Position = UDim2.new(1, -2, 0, 0)
     valueLabel.Size = UDim2.fromOffset(70, 22)
     valueLabel.BackgroundTransparency = 1
-    valueLabel.TextColor3 = Color3.fromRGB(180, 125, 255)
+    valueLabel.TextColor3 = Color3.fromRGB(0, 210, 255)
     valueLabel.TextSize = 11
     valueLabel.Font = Enum.Font.GothamBold
     valueLabel.TextXAlignment = Enum.TextXAlignment.Right
@@ -1006,21 +1006,21 @@ local function createSlider(text, min, max, step, value, callback, formatter)
     local bar = Instance.new("Frame")
     bar.Position = UDim2.fromOffset(2, 31)
     bar.Size = UDim2.new(1, -4, 0, 7)
-    bar.BackgroundColor3 = Color3.fromRGB(43, 35, 58)
+    bar.BackgroundColor3 = Color3.fromRGB(30, 42, 60)
     bar.BorderSizePixel = 0
     bar.Active = true
     bar.Parent = holder
     Instance.new("UICorner", bar).CornerRadius = UDim.new(1, 0)
     local fill = Instance.new("Frame")
     fill.Size = UDim2.new(0, 0, 1, 0)
-    fill.BackgroundColor3 = Color3.fromRGB(155, 75, 245)
+    fill.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
     fill.BorderSizePixel = 0
     fill.Parent = bar
     Instance.new("UICorner", fill).CornerRadius = UDim.new(1, 0)
     local knob = Instance.new("Frame")
     knob.AnchorPoint = Vector2.new(0.5, 0.5)
     knob.Size = UDim2.fromOffset(16, 16)
-    knob.BackgroundColor3 = Color3.fromRGB(215, 180, 255)
+    knob.BackgroundColor3 = Color3.fromRGB(180, 240, 255)
     knob.BorderSizePixel = 0
     knob.Parent = bar
     Instance.new("UICorner", knob).CornerRadius = UDim.new(1, 0)
@@ -1089,7 +1089,7 @@ local function updateAimButtonState(enabled)
             TriggerbotFOVCircle.Visible = false
         end
         AimToggle.Text = "ON"
-        AimToggle.BackgroundColor3 = Color3.fromRGB(145, 75, 235)
+        AimToggle.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
         notify("Aimbot ON")
     else
         AimToggle.Text = "AIM"
@@ -1581,7 +1581,7 @@ local function createFeatureAimButton(name, text, position, getEnabled, setEnabl
     button.Position = position
     button.Size = UDim2.fromOffset(48, 48)
     button.BackgroundColor3 = getEnabled()
-        and Color3.fromRGB(145, 75, 235)
+        and Color3.fromRGB(0, 180, 255)
         or Color3.fromRGB(235, 65, 65)
     button.Text = text .. "\n" .. (getEnabled() and "ON" or "OFF")
     button.TextColor3 = Color3.new(1, 1, 1)
@@ -1635,7 +1635,7 @@ local function createFeatureAimButton(name, text, position, getEnabled, setEnabl
         button.Visible = isShown() == true
         button.Text = text .. "\n" .. (enabled and "ON" or "OFF")
         button.BackgroundColor3 = enabled
-            and Color3.fromRGB(145, 75, 235)
+            and Color3.fromRGB(0, 180, 255)
             or Color3.fromRGB(235, 65, 65)
     end
     local function refresh()
@@ -1728,7 +1728,7 @@ refreshAimModeVisibility = function()
     end
     AimToggle.Text = Config.TrackingEnabled and "ON" or "AIM"
     if Config.TrackingEnabled == true then
-        AimToggle.BackgroundColor3 = Color3.fromRGB(145, 75, 235) 
+        AimToggle.BackgroundColor3 = Color3.fromRGB(0, 180, 255) 
     else
         AimToggle.BackgroundColor3 = Color3.fromRGB(235, 65, 65) 
     end
@@ -1797,7 +1797,7 @@ end
 local function createWarningMessage()
     local frame = Instance.new("Frame")
     frame.Size = UDim2.new(1, 0, 0, 58)
-    frame.BackgroundColor3 = Color3.fromRGB(58, 35, 82)
+    frame.BackgroundColor3 = Color3.fromRGB(15, 40, 60)
     frame.BorderSizePixel = 0
     frame.Parent = Content
     Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 8)
@@ -1806,7 +1806,7 @@ local function createWarningMessage()
     title.Size = UDim2.new(1, -24, 0, 17)
     title.BackgroundTransparency = 1
     title.Text = "Warning"
-    title.TextColor3 = Color3.fromRGB(225, 200, 255)
+    title.TextColor3 = Color3.fromRGB(0, 210, 255)
     title.TextSize = 11
     title.Font = Enum.Font.GothamBold
     title.TextXAlignment = Enum.TextXAlignment.Left
@@ -1816,7 +1816,7 @@ local function createWarningMessage()
     message.Size = UDim2.new(1, -24, 0, 28)
     message.BackgroundTransparency = 1
     message.Text = "Use at your own risk • Don't use your main account if you plan to use this cheat."
-    message.TextColor3 = Color3.fromRGB(235, 230, 245)
+    message.TextColor3 = Color3.fromRGB(215, 230, 245)
     message.TextSize = 9
     message.Font = Enum.Font.Gotham
     message.TextWrapped = true
@@ -1864,7 +1864,7 @@ local function buildMain()
             holder.Parent = Content
             local showButton = Instance.new("TextButton")
             showButton.Size = UDim2.new(1, 0, 0, 42)
-            showButton.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+            showButton.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
             showButton.BorderSizePixel = 0
             showButton.AutoButtonColor = false
             showButton.Text = ""
@@ -1873,7 +1873,7 @@ local function buildMain()
             local check = Instance.new("Frame")
             check.Position = UDim2.fromOffset(10, 12)
             check.Size = UDim2.fromOffset(18, 18)
-            check.BackgroundColor3 = Config.ShowSilentAimButton and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+            check.BackgroundColor3 = Config.ShowSilentAimButton and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
             check.BorderSizePixel = 0
             check.Parent = showButton
             Instance.new("UICorner", check).CornerRadius = UDim.new(0, 5)
@@ -1899,11 +1899,11 @@ local function buildMain()
             arrowButton.AnchorPoint = Vector2.new(1, 0.5)
             arrowButton.Position = UDim2.new(1, -8, 0.5, 0)
             arrowButton.Size = UDim2.fromOffset(34, 32)
-            arrowButton.BackgroundColor3 = Color3.fromRGB(35, 27, 48)
+            arrowButton.BackgroundColor3 = Color3.fromRGB(20, 36, 52)
             arrowButton.BorderSizePixel = 0
             arrowButton.AutoButtonColor = false
             arrowButton.Text = "›"
-            arrowButton.TextColor3 = Color3.fromRGB(205, 175, 245)
+            arrowButton.TextColor3 = Color3.fromRGB(0, 210, 255)
             arrowButton.TextSize = 21
             arrowButton.Font = Enum.Font.GothamBold
             arrowButton.ZIndex = 3
@@ -1913,7 +1913,7 @@ local function buildMain()
             local lockRow = Instance.new("TextButton")
             lockRow.Position = UDim2.fromOffset(0, 47)
             lockRow.Size = UDim2.new(1, 0, 0, 38)
-            lockRow.BackgroundColor3 = Color3.fromRGB(27, 23, 38)
+            lockRow.BackgroundColor3 = Color3.fromRGB(18, 28, 44)
             lockRow.BorderSizePixel = 0
             lockRow.AutoButtonColor = false
             lockRow.Text = ""
@@ -1933,7 +1933,7 @@ local function buildMain()
             local lockCheck = Instance.new("Frame")
             lockCheck.Position = UDim2.fromOffset(10, 10)
             lockCheck.Size = UDim2.fromOffset(18, 18)
-            lockCheck.BackgroundColor3 = Config.SilentAimButtonLocked and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+            lockCheck.BackgroundColor3 = Config.SilentAimButtonLocked and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
             lockCheck.BorderSizePixel = 0
             lockCheck.Parent = lockRow
             Instance.new("UICorner", lockCheck).CornerRadius = UDim.new(0, 5)
@@ -1946,13 +1946,13 @@ local function buildMain()
             lockCheckText.TextSize = 12
             lockCheckText.Parent = lockCheck
             local function refreshSilentControls()
-                check.BackgroundColor3 = Config.ShowSilentAimButton and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+                check.BackgroundColor3 = Config.ShowSilentAimButton and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
                 checkText.Text = Config.ShowSilentAimButton and "✓" or ""
                 SilentAimToggle.Visible = Config.ShowSilentAimButton
                 lockRow.Visible = Config.ShowSilentAimButton and lockOpen
                 holder.Size = UDim2.new(1, 0, 0, lockRow.Visible and 89 or 42)
                 arrowButton.Text = lockOpen and "⌃" or "›"
-                lockCheck.BackgroundColor3 = Config.SilentAimButtonLocked and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+                lockCheck.BackgroundColor3 = Config.SilentAimButtonLocked and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
                 lockCheckText.Text = Config.SilentAimButtonLocked and "✓" or ""
                 refreshSilentAimButton()
             end
@@ -2005,7 +2005,7 @@ local function buildMain()
             holder.Parent = Content
             local showButton = Instance.new("TextButton")
             showButton.Size = UDim2.new(1, 0, 0, 42)
-            showButton.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+            showButton.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
             showButton.BorderSizePixel = 0
             showButton.AutoButtonColor = false
             showButton.Text = ""
@@ -2014,7 +2014,7 @@ local function buildMain()
             local check = Instance.new("Frame")
             check.Position = UDim2.fromOffset(10, 12)
             check.Size = UDim2.fromOffset(18, 18)
-            check.BackgroundColor3 = Config.ShowAimButton and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+            check.BackgroundColor3 = Config.ShowAimButton and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
             check.BorderSizePixel = 0
             check.Parent = showButton
             Instance.new("UICorner", check).CornerRadius = UDim.new(0, 5)
@@ -2040,11 +2040,11 @@ local function buildMain()
             arrowButton.AnchorPoint = Vector2.new(1, 0.5)
             arrowButton.Position = UDim2.new(1, -8, 0.5, 0)
             arrowButton.Size = UDim2.fromOffset(34, 32)
-            arrowButton.BackgroundColor3 = Color3.fromRGB(35, 27, 48)
+            arrowButton.BackgroundColor3 = Color3.fromRGB(20, 36, 52)
             arrowButton.BorderSizePixel = 0
             arrowButton.AutoButtonColor = false
             arrowButton.Text = "›"
-            arrowButton.TextColor3 = Color3.fromRGB(205, 175, 245)
+            arrowButton.TextColor3 = Color3.fromRGB(0, 210, 255)
             arrowButton.TextSize = 21
             arrowButton.Font = Enum.Font.GothamBold
             arrowButton.Parent = showButton
@@ -2052,7 +2052,7 @@ local function buildMain()
             local lockRow = Instance.new("TextButton")
             lockRow.Position = UDim2.fromOffset(0, 47)
             lockRow.Size = UDim2.new(1, 0, 0, 38)
-            lockRow.BackgroundColor3 = Color3.fromRGB(27, 23, 38)
+            lockRow.BackgroundColor3 = Color3.fromRGB(18, 28, 44)
             lockRow.BorderSizePixel = 0
             lockRow.AutoButtonColor = false
             lockRow.Text = ""
@@ -2072,7 +2072,7 @@ local function buildMain()
             local lockCheck = Instance.new("Frame")
             lockCheck.Position = UDim2.fromOffset(10, 10)
             lockCheck.Size = UDim2.fromOffset(18, 18)
-            lockCheck.BackgroundColor3 = aimButtonLocked and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+            lockCheck.BackgroundColor3 = aimButtonLocked and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
             lockCheck.BorderSizePixel = 0
             lockCheck.Parent = lockRow
             Instance.new("UICorner", lockCheck).CornerRadius = UDim.new(0, 5)
@@ -2085,13 +2085,13 @@ local function buildMain()
             lockCheckText.TextSize = 12
             lockCheckText.Parent = lockCheck
             local function refreshShowAim()
-                check.BackgroundColor3 = Config.ShowAimButton and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+                check.BackgroundColor3 = Config.ShowAimButton and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
                 checkText.Text = Config.ShowAimButton and "✓" or ""
                 AimToggle.Visible = Config.ShowAimButton
                 lockRow.Visible = Config.ShowAimButton and lockPanelOpen
                 holder.Size = UDim2.new(1, 0, 0, lockRow.Visible and 89 or 42)
                 arrowButton.Text = lockPanelOpen and "⌃" or "›"
-                lockCheck.BackgroundColor3 = aimButtonLocked and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+                lockCheck.BackgroundColor3 = aimButtonLocked and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
                 lockCheckText.Text = aimButtonLocked and "✓" or ""
             end
             connect(showButton.MouseButton1Click, function()
@@ -2178,7 +2178,7 @@ local function buildMain()
             holder.Parent = Content
             local showButton = Instance.new("TextButton")
             showButton.Size = UDim2.new(1, 0, 0, 42)
-            showButton.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+            showButton.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
             showButton.BorderSizePixel = 0
             showButton.AutoButtonColor = false
             showButton.Text = ""
@@ -2187,7 +2187,7 @@ local function buildMain()
             local check = Instance.new("Frame")
             check.Position = UDim2.fromOffset(10, 12)
             check.Size = UDim2.fromOffset(18, 18)
-            check.BackgroundColor3 = Config.ShowTriggerbotButton and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+            check.BackgroundColor3 = Config.ShowTriggerbotButton and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
             check.BorderSizePixel = 0
             check.Parent = showButton
             Instance.new("UICorner", check).CornerRadius = UDim.new(0, 5)
@@ -2213,11 +2213,11 @@ local function buildMain()
             arrowButton.AnchorPoint = Vector2.new(1, 0.5)
             arrowButton.Position = UDim2.new(1, -8, 0.5, 0)
             arrowButton.Size = UDim2.fromOffset(34, 32)
-            arrowButton.BackgroundColor3 = Color3.fromRGB(35, 27, 48)
+            arrowButton.BackgroundColor3 = Color3.fromRGB(20, 36, 52)
             arrowButton.BorderSizePixel = 0
             arrowButton.AutoButtonColor = false
             arrowButton.Text = "›"
-            arrowButton.TextColor3 = Color3.fromRGB(205, 175, 245)
+            arrowButton.TextColor3 = Color3.fromRGB(0, 210, 255)
             arrowButton.TextSize = 21
             arrowButton.Font = Enum.Font.GothamBold
             arrowButton.ZIndex = 3
@@ -2227,7 +2227,7 @@ local function buildMain()
             local lockRow = Instance.new("TextButton")
             lockRow.Position = UDim2.fromOffset(0, 47)
             lockRow.Size = UDim2.new(1, 0, 0, 38)
-            lockRow.BackgroundColor3 = Color3.fromRGB(27, 23, 38)
+            lockRow.BackgroundColor3 = Color3.fromRGB(18, 28, 44)
             lockRow.BorderSizePixel = 0
             lockRow.AutoButtonColor = false
             lockRow.Text = ""
@@ -2247,7 +2247,7 @@ local function buildMain()
             local lockCheck = Instance.new("Frame")
             lockCheck.Position = UDim2.fromOffset(10, 10)
             lockCheck.Size = UDim2.fromOffset(18, 18)
-            lockCheck.BackgroundColor3 = Config.TriggerbotButtonLocked and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+            lockCheck.BackgroundColor3 = Config.TriggerbotButtonLocked and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
             lockCheck.BorderSizePixel = 0
             lockCheck.Parent = lockRow
             Instance.new("UICorner", lockCheck).CornerRadius = UDim.new(0, 5)
@@ -2260,13 +2260,13 @@ local function buildMain()
             lockCheckText.TextSize = 12
             lockCheckText.Parent = lockCheck
             local function refreshTriggerControls()
-                check.BackgroundColor3 = Config.ShowTriggerbotButton and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+                check.BackgroundColor3 = Config.ShowTriggerbotButton and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
                 checkText.Text = Config.ShowTriggerbotButton and "✓" or ""
                 TriggerbotToggle.Visible = Config.ShowTriggerbotButton
                 lockRow.Visible = Config.ShowTriggerbotButton and lockOpen
                 holder.Size = UDim2.new(1, 0, 0, lockRow.Visible and 89 or 42)
                 arrowButton.Text = lockOpen and "⌃" or "›"
-                lockCheck.BackgroundColor3 = Config.TriggerbotButtonLocked and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+                lockCheck.BackgroundColor3 = Config.TriggerbotButtonLocked and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
                 lockCheckText.Text = Config.TriggerbotButtonLocked and "✓" or ""
                 refreshTriggerbotButton()
             end
@@ -2630,7 +2630,7 @@ end
 local function createTeleportPlayerButton(player)
     local button = Instance.new("TextButton")
     button.Size = UDim2.new(1, 0, 0, 42)
-    button.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+    button.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
     button.BorderSizePixel = 0
     button.AutoButtonColor = false
     button.Text = ""
@@ -2660,10 +2660,10 @@ local function createTeleportPlayerButton(player)
     action.AnchorPoint = Vector2.new(1, 0.5)
     action.Position = UDim2.new(1, -10, 0.5, 0)
     action.Size = UDim2.fromOffset(48, 24)
-    action.BackgroundColor3 = Color3.fromRGB(125, 65, 205)
+    action.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
     action.BackgroundTransparency = 0
     action.Text = "TP"
-    action.TextColor3 = Color3.new(1, 1, 1)
+    action.TextColor3 = Color3.fromRGB(10, 15, 25)
     action.TextSize = 10
     action.Font = Enum.Font.GothamBold
     action.Parent = button
@@ -2701,13 +2701,13 @@ local function updateCameraTPButton()
         CameraTPButton.TextColor3 = Color3.fromRGB(255, 255, 255)
         if TPHereButton then
             TPHereButton.Visible = Config.ViewCameraTP
-            TPHereButton.BackgroundColor3 = Color3.fromRGB(125, 65, 205)
+            TPHereButton.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
             TPHereButton.Text = "TP HERE"
         end
     else
         CameraTPButton.Text = "TP CAM"
-        CameraTPButton.BackgroundColor3 = Color3.fromRGB(125, 65, 205)
-        CameraTPButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        CameraTPButton.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
+        CameraTPButton.TextColor3 = Color3.fromRGB(10, 15, 25)
         if TPHereButton then
             TPHereButton.Visible = false
         end
@@ -2911,11 +2911,11 @@ local function createCameraTPFloatingButton()
     CameraTPButton.AnchorPoint = Vector2.new(0, 1)
     CameraTPButton.Position = UDim2.new(0, 135, 1, -15)
     CameraTPButton.Size = UDim2.fromOffset(105, 48)
-    CameraTPButton.BackgroundColor3 = Color3.fromRGB(125, 65, 205)
+    CameraTPButton.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
     CameraTPButton.BorderSizePixel = 0
     CameraTPButton.AutoButtonColor = false
     CameraTPButton.Text = "TP CAM"
-    CameraTPButton.TextColor3 = Color3.new(1, 1, 1)
+    CameraTPButton.TextColor3 = Color3.fromRGB(10, 15, 25)
     CameraTPButton.TextSize = 10
     CameraTPButton.Font = Enum.Font.GothamBold
     CameraTPButton.Visible = Config.ViewCameraTP
@@ -3023,7 +3023,7 @@ local function createSpectatePlayerButton(player, parent)
     parent = parent or Content
     local holder = Instance.new("Frame")
     holder.Size = UDim2.new(1, 0, 0, 42)
-    holder.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+    holder.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
     holder.BorderSizePixel = 0
     holder.Parent = parent
     Instance.new("UICorner", holder).CornerRadius = UDim.new(0, 8)
@@ -3051,11 +3051,11 @@ local function createSpectatePlayerButton(player, parent)
     action.AnchorPoint = Vector2.new(1, 0.5)
     action.Position = UDim2.new(1, -10, 0.5, 0)
     action.Size = UDim2.fromOffset(76, 26)
-    action.BackgroundColor3 = Color3.fromRGB(125, 65, 205)
+    action.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
     action.BorderSizePixel = 0
     action.AutoButtonColor = false
     action.Text = "SPECTATE"
-    action.TextColor3 = Color3.new(1, 1, 1)
+    action.TextColor3 = Color3.fromRGB(10, 15, 25)
     action.TextSize = 8
     action.Font = Enum.Font.GothamBold
     action.Parent = holder
@@ -3107,7 +3107,7 @@ local function buildTeleport()
         holder.Parent = Content
         local viewButton = Instance.new("TextButton")
         viewButton.Size = UDim2.new(1, 0, 0, 42)
-        viewButton.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+        viewButton.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
         viewButton.BorderSizePixel = 0
         viewButton.AutoButtonColor = false
         viewButton.Text = ""
@@ -3116,7 +3116,7 @@ local function buildTeleport()
         local check = Instance.new("Frame")
         check.Position = UDim2.fromOffset(10, 12)
         check.Size = UDim2.fromOffset(18, 18)
-        check.BackgroundColor3 = Config.ViewCameraTP and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+        check.BackgroundColor3 = Config.ViewCameraTP and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
         check.BorderSizePixel = 0
         check.Parent = viewButton
         Instance.new("UICorner", check).CornerRadius = UDim.new(0, 5)
@@ -3142,11 +3142,11 @@ local function buildTeleport()
         arrowButton.AnchorPoint = Vector2.new(1, 0.5)
         arrowButton.Position = UDim2.new(1, -8, 0.5, 0)
         arrowButton.Size = UDim2.fromOffset(34, 32)
-        arrowButton.BackgroundColor3 = Color3.fromRGB(35, 27, 48)
+        arrowButton.BackgroundColor3 = Color3.fromRGB(20, 36, 52)
         arrowButton.BorderSizePixel = 0
         arrowButton.AutoButtonColor = false
         arrowButton.Text = "›"
-        arrowButton.TextColor3 = Color3.fromRGB(205, 175, 245)
+        arrowButton.TextColor3 = Color3.fromRGB(0, 210, 255)
         arrowButton.TextSize = 21
         arrowButton.Font = Enum.Font.GothamBold
         arrowButton.Parent = viewButton
@@ -3154,7 +3154,7 @@ local function buildTeleport()
         local lockRow = Instance.new("TextButton")
         lockRow.Position = UDim2.fromOffset(0, 47)
         lockRow.Size = UDim2.new(1, 0, 0, 38)
-        lockRow.BackgroundColor3 = Color3.fromRGB(27, 23, 38)
+        lockRow.BackgroundColor3 = Color3.fromRGB(18, 28, 44)
         lockRow.BorderSizePixel = 0
         lockRow.AutoButtonColor = false
         lockRow.Text = ""
@@ -3164,7 +3164,7 @@ local function buildTeleport()
         local lockCheck = Instance.new("Frame")
         lockCheck.Position = UDim2.fromOffset(10, 10)
         lockCheck.Size = UDim2.fromOffset(18, 18)
-        lockCheck.BackgroundColor3 = Config.CameraTPButtonLocked and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+        lockCheck.BackgroundColor3 = Config.CameraTPButtonLocked and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
         lockCheck.BorderSizePixel = 0
         lockCheck.Parent = lockRow
         Instance.new("UICorner", lockCheck).CornerRadius = UDim.new(0, 5)
@@ -3188,12 +3188,12 @@ local function buildTeleport()
         lockLabel.Parent = lockRow
         local panelOpen = false
         local function refreshCameraTPPanel()
-            check.BackgroundColor3 = Config.ViewCameraTP and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+            check.BackgroundColor3 = Config.ViewCameraTP and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
             checkText.Text = Config.ViewCameraTP and "✓" or ""
             lockRow.Visible = Config.ViewCameraTP and panelOpen
             holder.Size = UDim2.new(1, 0, 0, lockRow.Visible and 89 or 42)
             arrowButton.Text = panelOpen and "⌃" or "›"
-            lockCheck.BackgroundColor3 = Config.CameraTPButtonLocked and Color3.fromRGB(145, 75, 235) or Color3.fromRGB(38, 43, 56)
+            lockCheck.BackgroundColor3 = Config.CameraTPButtonLocked and Color3.fromRGB(0, 180, 255) or Color3.fromRGB(38, 48, 65)
             lockCheckText.Text = Config.CameraTPButtonLocked and "✓" or ""
         end
         connect(viewButton.MouseButton1Click, function()
@@ -3253,11 +3253,11 @@ local function buildTeleport()
         teleportRefreshRow.Parent = Content
         local teleportRefreshButton = Instance.new("TextButton")
         teleportRefreshButton.Size = UDim2.new(1, 0, 1, 0)
-        teleportRefreshButton.BackgroundColor3 = Color3.fromRGB(35, 29, 48)
+        teleportRefreshButton.BackgroundColor3 = Color3.fromRGB(20, 36, 52)
         teleportRefreshButton.BorderSizePixel = 0
         teleportRefreshButton.AutoButtonColor = false
         teleportRefreshButton.Text = "↺  Refresh Players"
-        teleportRefreshButton.TextColor3 = Color3.fromRGB(220, 205, 245)
+        teleportRefreshButton.TextColor3 = Color3.fromRGB(0, 210, 255)
         teleportRefreshButton.TextSize = 11
         teleportRefreshButton.Font = Enum.Font.GothamBold
         teleportRefreshButton.Parent = teleportRefreshRow
@@ -3284,7 +3284,7 @@ local function buildTeleport()
             if #currentPlayers == 0 then
                 local empty = Instance.new("TextLabel")
                 empty.Size = UDim2.new(1, 0, 0, 42)
-                empty.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+                empty.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
                 empty.BorderSizePixel = 0
                 empty.Text = "No players available to teleport"
                 empty.TextColor3 = Color3.fromRGB(140, 150, 175)
@@ -3331,11 +3331,11 @@ local function buildTeleport()
         createSection("Spectate Players")
         spectateStopButton = Instance.new("TextButton")
         spectateStopButton.Size = UDim2.new(1, 0, 0, 40)
-        spectateStopButton.BackgroundColor3 = Color3.fromRGB(125, 65, 205)
+        spectateStopButton.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
         spectateStopButton.BorderSizePixel = 0
         spectateStopButton.AutoButtonColor = false
         spectateStopButton.Text = "STOP SPECTATING"
-        spectateStopButton.TextColor3 = Color3.new(1, 1, 1)
+        spectateStopButton.TextColor3 = Color3.fromRGB(10, 15, 25)
         spectateStopButton.TextSize = 10
         spectateStopButton.Font = Enum.Font.GothamBold
         spectateStopButton.Visible = Config.SpectateActive
@@ -3358,11 +3358,11 @@ local function buildTeleport()
         spectateRefreshRow.Parent = Content
         local refreshButton = Instance.new("TextButton")
         refreshButton.Size = UDim2.new(1, 0, 1, 0)
-        refreshButton.BackgroundColor3 = Color3.fromRGB(35, 29, 48)
+        refreshButton.BackgroundColor3 = Color3.fromRGB(20, 36, 52)
         refreshButton.BorderSizePixel = 0
         refreshButton.AutoButtonColor = false
         refreshButton.Text = "↺  Refresh Players"
-        refreshButton.TextColor3 = Color3.fromRGB(220, 205, 245)
+        refreshButton.TextColor3 = Color3.fromRGB(0, 210, 255)
         refreshButton.TextSize = 11
         refreshButton.Font = Enum.Font.GothamBold
         refreshButton.Parent = spectateRefreshRow
@@ -3389,7 +3389,7 @@ local function buildTeleport()
             if #currentPlayers == 0 then
                 local emptySpectate = Instance.new("TextLabel")
                 emptySpectate.Size = UDim2.new(1, 0, 0, 42)
-                emptySpectate.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+                emptySpectate.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
                 emptySpectate.BorderSizePixel = 0
                 emptySpectate.Text = "No players available to spectate"
                 emptySpectate.TextColor3 = Color3.fromRGB(140, 150, 175)
@@ -3449,7 +3449,7 @@ end
 local function createSocialRow(title, link, label)
     local holder = Instance.new("Frame")
     holder.Size = UDim2.new(1, 0, 0, 58)
-    holder.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+    holder.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
     holder.BorderSizePixel = 0
     holder.Parent = Content
     Instance.new("UICorner", holder).CornerRadius = UDim.new(0, 8)
@@ -3479,11 +3479,11 @@ local function createSocialRow(title, link, label)
     copy.AnchorPoint = Vector2.new(1, 0.5)
     copy.Position = UDim2.new(1, -10, 0.5, 0)
     copy.Size = UDim2.fromOffset(58, 28)
-    copy.BackgroundColor3 = Color3.fromRGB(125, 65, 205)
+    copy.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
     copy.BorderSizePixel = 0
     copy.AutoButtonColor = false
     copy.Text = "COPY"
-    copy.TextColor3 = Color3.new(1, 1, 1)
+    copy.TextColor3 = Color3.fromRGB(10, 15, 25)
     copy.TextSize = 9
     copy.Font = Enum.Font.GothamBold
     copy.Parent = holder
@@ -3520,7 +3520,7 @@ local function buildAbout()
     for _, featureName in ipairs(upcomingFeatures) do
         local featureLabel = Instance.new("TextLabel")
         featureLabel.Size = UDim2.new(1, 0, 0, 28)
-        featureLabel.BackgroundColor3 = Color3.fromRGB(23, 27, 37)
+        featureLabel.BackgroundColor3 = Color3.fromRGB(22, 28, 42)
         featureLabel.BorderSizePixel = 0
         featureLabel.Text = "• " .. featureName
         featureLabel.TextColor3 = Color3.fromRGB(190, 195, 210)
@@ -3611,7 +3611,7 @@ local function createESP(player)
     healthFill.AnchorPoint = Vector2.new(0, 1)
     healthFill.Position = UDim2.fromScale(0, 1)
     healthFill.Size = UDim2.fromScale(1, 1)
-    healthFill.BackgroundColor3 = Color3.fromRGB(70, 220, 110)
+    healthFill.BackgroundColor3 = Color3.fromRGB(0, 210, 255)
     healthFill.BorderSizePixel = 0
     healthFill.Parent = healthBackground
     local character = getCharacter(player)
@@ -3708,9 +3708,7 @@ connect(RunService.RenderStepped, function()
                 )
                 data.HealthFill.Size = UDim2.new(1, 0, healthRatio, 0)
                 data.HealthFill.BackgroundColor3 =
-                    Color3.fromRGB(70 + (1 - healthRatio) * 185,
-                                   220 * healthRatio,
-                                   80)
+                    Color3.fromRGB(0, 210, 255)
             end
         else
             if data.Highlight then
@@ -3735,7 +3733,7 @@ ReopenButton.AnchorPoint = Vector2.new(1, 1)
 ReopenButton.Position = UDim2.new(1, -18, 1, -18)
 ReopenButton.Size = UDim2.fromOffset(52, 52)
 ReopenButton.BackgroundTransparency = 1
-ReopenButton.Image = "rbxassetid://110688253549566"
+ReopenButton.Image = "rbxassetid://6031097225"
 ReopenButton.ScaleType = Enum.ScaleType.Fit
 ReopenButton.Visible = false
 ReopenButton.ZIndex = 1000
